@@ -1,0 +1,47 @@
+<section class="movie-details">
+    <div class="image">
+        <%= image_tag @movie.poster_file_name %>
+        <div class="faves">
+            <%= fave_or_unfave_button(@fave, @movie) %>
+            <div class="count">
+                    <%= @favers.size %> 
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <h3><%= @movie.title%></h3>
+        <h4>Rating: <%= @movie.rating%></h4>
+        <p><%= @movie.description %></p>
+        <p><Strong>Rlease Date: </Strong><%= year(@movie.released_on)%></p>
+
+        <%= link_to "See Reviews", movie_reviews_path(@movie),  class: "reviews" %>
+
+        <%= link_to "Write A Review", new_movie_review_path(@movie), class: "review ml-3" %>
+        <% if current_user_admin? %>
+            <section class="admin d-flex">
+                <%= button_to "Delete", @movie, class: "btn btn-danger ", method: :delete, :onclick => "return confirm('Are you sure?')" %>
+                <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-secondary ml-4" %>
+            </section>
+        <% end %>
+    </div>
+    <aside>
+    <% if @favers %>
+        <h4>Favourited by</h4>
+        <ul>
+            <% @favers.each do |f| %>
+                <li><%= link_to f.name, f %></li>
+            <%end%>
+        </ul>
+    <% end %>
+    <% if @genres %>
+        <h4>Genres</h4>
+        <ul class="row flex-wrap">
+            <% @genres.each do |g| %>
+                <li class="btn btn-secondary m-1 py-0"><%= g.name %></li>
+            <%end%>
+        </ul>
+    <% end %>
+    </aside>
+    <%# to change the method to delete|| here we want to override the verb from a default get to a delete %>
+</section>
+

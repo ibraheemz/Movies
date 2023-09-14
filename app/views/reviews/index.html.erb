@@ -1,0 +1,15 @@
+<div class="ml-5">
+    <h1> <%= @movie.title %> Reviews </h1>
+    <ul class="reviews" >
+        <% @reviews.each do |review| %>
+            <li>
+                <%= render "shared/stars", percent: review.stars_as_percent %>
+                <b><%= link_to review.user.name, review.user %>:</b>
+                <%= review.body %>
+                <span class="date">
+                <%= time_ago_in_words(review.created_at) %> ago
+                </span>
+            </li>
+        <%end%>
+    </ul>
+</div>

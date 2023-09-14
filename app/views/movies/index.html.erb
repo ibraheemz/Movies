@@ -1,0 +1,32 @@
+<% @movies.each do |movie| %>
+    <section class="movie">
+        <div class="image">
+            <%= image_tag movie.poster_file_name %>
+        </div>
+        <div class="summary">
+            <h3>
+                <%= link_to movie.title, movie %>
+            </h3>
+            <h4>
+                Rating: <%= movie.rating%>
+            </h4>
+            <span class="stars">
+                <%= render "shared/stars", percent: movie.average_stars_as_percent %>
+            </span>
+            <p>
+                <%= truncate(movie.description, length: 40)%>
+            </p>
+            <p>
+                <Strong>
+                    Rlease Date: 
+                </Strong>
+                <%= year(movie.released_on)%>
+            </p>            
+        </div>
+    </section>
+<%end%>
+<% if current_user_admin? %>
+    <section class="admin">
+        <%= link_to "Add a Movie", new_movie_path, class: "btn btn-secondary ml-5"%>
+    </section>
+<% end %>
