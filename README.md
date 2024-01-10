@@ -1,24 +1,14 @@
-# README
+# Movies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+is a project I made to demonstrate and practice my skills in rails
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Steps to install and set up the project:
 
-* System dependencies
+1. Clone the repository: `git clone https://github.com/ibraheemz/Movies.git`
+2. Install dependencies: `bundle install`
+3. Set up the database: `rails db:setup`
+4. Start the server: `rails server`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+and Voila!
