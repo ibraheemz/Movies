@@ -15,8 +15,8 @@
     <%= f.label :released_on %>
     <%= f.date_select :released_on %>
 
-    <%= f.label :poster_file_name %>
-    <%= f.text_field :poster_file_name %>
+    <%= f.label :poster_image %>
+    <%= f.file_field :poster_image %>
 
     <div class="checkboxes">
         <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
